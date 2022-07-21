@@ -1,0 +1,16 @@
+[functions]
+  directory = "functions"
+  node_bundler = "esbuild"
+
+[build]
+  command = "CI=false && npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+
+
+
+
