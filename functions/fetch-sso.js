@@ -1,7 +1,7 @@
 const Cumulio = require("cumulio");
-const { auth } = require("../.netlify/lib/auth");
+const { requireAuth } = require("../.netlify/lib/auth");
 
-export const handler = auth(async (event, context) => {
+export const handler = requireAuth(async (event, context) => {
   let ssoResponse;
   var client = new Cumulio({
     api_key: process.env.CUMUL_KEY,
