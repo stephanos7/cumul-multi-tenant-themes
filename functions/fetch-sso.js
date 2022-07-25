@@ -9,13 +9,6 @@ export const handler = requireAuth(async (event, context) => {
     host: "https://api.cumul.io",
   });
 
-  client
-    .get("theme", {
-      attributes: ["id", "name"],
-    })
-    .then(function (data) {
-      console.log("Success!", JSON.stringify(data));
-    });
   try {
     const { claims } = context.identityContext;
 
@@ -38,7 +31,6 @@ export const handler = requireAuth(async (event, context) => {
         },
       });
     };
-    console.log("CLAIMS ARE!!!! ,", JSON.stringify(claims.preferences.theme));
     ssoResponse = await generateSSOcredentials();
   } catch (err) {
     console.log(err.message);
