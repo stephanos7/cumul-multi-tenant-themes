@@ -16,29 +16,29 @@ export const handler = requireAuth(async (event, context) => {
     .then(function (data) {
       console.log("Success!", JSON.stringify(data));
     });
-
-  const generateSSOcredentials = async () => {
-    return await client.create("authorization", {
-      integration_id: "3aaf834e-6f97-4204-81aa-e3215811bef8",
-      type: "sso",
-      expiry: "24 hours",
-      inactivity_interval: "10 minutes",
-      username: "exampleUser",
-      name: "Example User",
-      email: "example@app.com",
-      suborganization: "exampleUser",
-      role: "viewer",
-      theme: {
-        id: "895fd6dd-90ef-4562-b570-30d548832065",
-        type: "foo",
-        itemsBackground: "#fff",
-        colors: ["#fff"],
-      },
-    });
-  };
   try {
     const { claims } = context.identityContext;
-    console.log("CLAIMS ARE!!!! ,", JSON.stringify(claims));
+
+    const generateSSOcredentials = async () => {
+      return await client.create("authorization", {
+        integration_id: "3aaf834e-6f97-4204-81aa-e3215811bef8",
+        type: "sso",
+        expiry: "24 hours",
+        inactivity_interval: "10 minutes",
+        username: "exampleUser",
+        name: "Example User",
+        email: "example@app.com",
+        suborganization: "exampleUser",
+        role: "viewer",
+        theme: {
+          id: claims.preferences.theme,
+          type: "foo",
+          itemsBackground: "#fff",
+          colors: ["#fff"],
+        },
+      });
+    };
+    console.log("CLAIMS ARE!!!! ,", JSON.stringify(claims.preferences.theme));
     ssoResponse = await generateSSOcredentials();
   } catch (err) {
     console.log(err.message);
