@@ -1,7 +1,10 @@
+import * as React from "react";
+import { NavBar } from "../components/NavBar";
+
 function Public() {
   return (
     <div>
-      <h1>Public site</h1>
+      <NavBar />
     </div>
   );
 }
