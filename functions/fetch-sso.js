@@ -13,7 +13,7 @@ export const handler = requireAuth(async (event, context) => {
     const { claims } = context.identityContext;
     const generateSSOcredentials = async () => {
       return await client.create("authorization", {
-        integration_id: "5bdf0a8f-3c2b-4214-97b0-45c0dc0ac8f7",
+        integration_id: "da65ca62-fd24-4a54-8a00-6434dea90d7b",
         type: "sso",
         expiry: "24 hours",
         inactivity_interval: "10 minutes",
