@@ -11,10 +11,10 @@ export const handler = requireAuth(async (event, context) => {
 
   try {
     const { claims } = context.identityContext;
-
+    console.log(" MY CLAIS ", claims)
     const generateSSOcredentials = async () => {
       return await client.create("authorization", {
-        integration_id: "3aaf834e-6f97-4204-81aa-e3215811bef8",
+        integration_id: "da65ca62-fd24-4a54-8a00-6434dea90d7b",
         type: "sso",
         expiry: "24 hours",
         inactivity_interval: "10 minutes",
@@ -23,6 +23,9 @@ export const handler = requireAuth(async (event, context) => {
         email: "example@app.com",
         suborganization: "exampleUser",
         role: "viewer",
+        metadata: {
+          brand: [claims.data.brand],
+        },
         theme: {
           id: claims.preferences.theme,
           type: "foo",
