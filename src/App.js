@@ -10,7 +10,6 @@ function App() {
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       redirectUri={`${window.location.origin}/brand-analytics`}
       audience={process.env.REACT_APP_AUTH0_AUDIENCE}
-      scope="read:current_user update:current_user_metadata"
     >
       <Routing />
     </Auth0Provider>
