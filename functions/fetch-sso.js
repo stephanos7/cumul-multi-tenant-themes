@@ -11,6 +11,7 @@ export const handler = requireAuth(async (event, context) => {
 
   try {
     const { claims } = context.identityContext;
+    console.log(" MY CLAIS ", claims)
     const generateSSOcredentials = async () => {
       return await client.create("authorization", {
         integration_id: "da65ca62-fd24-4a54-8a00-6434dea90d7b",
