@@ -5,7 +5,7 @@ import { CumulioWrapper } from "../components/CumulWrapper";
 import { Navigate } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
 
-const Protected = () => {
+const BrandAnalytics = () => {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0();
   const [keyToken, setKeyToken] = useState(null);
@@ -47,4 +47,4 @@ const Protected = () => {
   );
 };
 
-export default Protected;
+export default BrandAnalytics;
