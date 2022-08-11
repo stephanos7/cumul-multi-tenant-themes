@@ -23,7 +23,7 @@ export const handler = requireAuth(async (event, context) => {
         suborganization: "exampleUser",
         role: "viewer",
         metadata: {
-          shop_name: [claims.data.shop_name],
+          designer: [claims.data.designer],
         },
         theme: {
           id: claims.preferences.theme,
