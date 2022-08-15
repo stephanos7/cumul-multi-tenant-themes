@@ -11,7 +11,7 @@ export const handler = requireAuth(async (event, context) => {
 
   try {
     const { claims } = context.identityContext;
-    console.log(" MY CLAIS ", claims)
+    console.log(" MY CLAIS ", claims);
     const generateSSOcredentials = async () => {
       return await client.create("authorization", {
         integration_id: "da65ca62-fd24-4a54-8a00-6434dea90d7b",
@@ -21,13 +21,13 @@ export const handler = requireAuth(async (event, context) => {
         username: "exampleUser",
         name: "Example User",
         email: "example@app.com",
-        suborganization: "exampleUser",
+        suborganization: claims.brand,
         role: "viewer",
         metadata: {
-          brand: [claims.data.brand],
+          brand: [claims.brand],
         },
         theme: {
-          id: claims.preferences.theme,
+          id: claims.theme,
           type: "foo",
           itemsBackground: "#fff",
           colors: ["#fff"],
